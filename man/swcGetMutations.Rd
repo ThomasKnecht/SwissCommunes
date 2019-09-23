@@ -4,10 +4,13 @@
 \alias{swcGetMutations}
 \title{Create a list of municipality mutations}
 \usage{
-swcGetMutations(swc = NULL)
+swcGetMutations(swc = NULL, mids = NULL)
 }
 \arguments{
 \item{swc}{Ignored.}
+
+\item{mids}{A list of municipality id's of which the mutations should be
+retrieved.}
 }
 \value{
 A data frame that represents mutations.
