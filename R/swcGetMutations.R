@@ -41,12 +41,15 @@ swcGetMutations <- function(swc = NULL, mids = NULL) {
     municipality_mutations <- SwissHistMunData::municipality_mutations
   } else {
     municipality_mutations <- subset(SwissHistMunData::municipality_mutations, mId %in% mids)
+  } else if (!is.null(canton)) {
+    municipality_mutations <- subset(SwissHistMunData::municipality_mutations, cAbbreviation %in% canton)
   }
 
   mun.mut <- merge(
     subset(
       municipality_mutations
       [, c(
+          "cAbbreviation",
           "mHistId",
           "mId",
           "mShortName",
