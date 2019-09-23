@@ -7,8 +7,9 @@
 #'   If NULL, all merges are returned
 #'
 #' @examples
-#'  zuerich_merges <- swcGetMunMerges(year = 2019, canton = "ZH")
-
+#' zuerich_merges <- swcGetMunMerges(year = 2019, canton = "ZH")
+#'
+#' @export
 swcGetMunMerges <- function(year = NULL, canton = NULL) {
   if (is.null(canton)) {
     mutations <- swcGetMutations()
