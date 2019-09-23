@@ -1,3 +1,14 @@
+#' Get municipality merges for a certain year and cantona
+#'
+#' @param year The year where the merges took place
+#'
+#' @param canton The abbreviation as characger
+#'   of a canton from which the merges should be returned.
+#'   If NULL, all merges are returned
+#'
+#' @examples
+#'  zuerich_merges <- swcGetMerges(year = 2019, canton = "ZH")
+
 swcGetMunMerges <- function(year = NULL, canton = NULL) {
   if (is.null(canton)) {
     mutations <- swcGetMutations()
