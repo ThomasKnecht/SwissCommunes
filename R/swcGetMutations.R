@@ -24,6 +24,8 @@
 #' @param mids A list of municipality id's of which the mutations should be
 #'   retrieved.
 #'
+#' @param canton A canton abbreviation as character.
+#'
 #' @template swc
 #'
 #' @return A data frame that represents mutations.

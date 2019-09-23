@@ -11,6 +11,8 @@ swcGetMutations(swc = NULL, mids = NULL, canton = NULL)
 
 \item{mids}{A list of municipality id's of which the mutations should be
 retrieved.}
+
+\item{canton}{A canton abbreviation as character.}
 }
 \value{
 A data frame that represents mutations.
