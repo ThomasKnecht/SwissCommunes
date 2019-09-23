@@ -19,23 +19,22 @@ swcGetMunMerges <- function(year = NULL, canton = NULL) {
 
   mun.mut <- subset(mun.mut.all, !is.na(get("mMutationNumber.x")))
 
-  mun.mut.red <- filter(
-    mun.mut,
+  mun.mut.red <- dplyr::filter(mun.mut,
     !(mMutationNumber.x %in% unique(na.omit(mun.mut$mMutationNumber.y)))
   )
 
-  mun.mut.fus <- filter(
+  mun.mut.fus <- dplyr::filter(
     mun.mut.red,
     !grepl(c("Reassignment|name"), mAdmissionMode.x)
   )
 
 
-  mun.mut.fus <- mutate(
+  mun.mut.fus <- dplyr::mutate(
     mun.mut.fus,
     name_to = ifelse(!is.na(mShortName.y.y), mShortName.y.y, mShortName.y.x)
   )
 
-  mun.mut.final <- select(mun.mut.fus,
+  mun.mut.final <- dplyr::select(mun.mut.fus,
     canton = cAbbreviation.x,
     mId_from = mId.x.x,
     name_from = mShortName.x.x,
