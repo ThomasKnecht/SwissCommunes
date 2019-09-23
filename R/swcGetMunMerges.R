@@ -1,4 +1,4 @@
-swcGetMerges <- function(year = NULL, canton = NULL) {
+swcGetMunMerges <- function(year = NULL, canton = NULL) {
   if (is.null(canton)) {
     mutations <- swcGetMutations()
   } else {
