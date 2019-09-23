@@ -39,7 +39,7 @@ swcGetMutations <- function(swc = NULL, mids = NULL) {
 
   if (is.null(mids)) {
     municipality_mutations <- SwissHistMunData::municipality_mutations
-  } else {
+  } else if (!is.null(mids)) {
     municipality_mutations <- subset(SwissHistMunData::municipality_mutations, mId %in% mids)
   } else if (!is.null(canton)) {
     municipality_mutations <- subset(SwissHistMunData::municipality_mutations, cAbbreviation %in% canton)
