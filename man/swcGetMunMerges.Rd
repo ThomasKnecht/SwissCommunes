@@ -17,5 +17,5 @@ If NULL, all merges are returned}
 Get municipality merges for a certain year and cantona
 }
 \examples{
- zuerich_merges <- swcGetMerges(year = 2019, canton = "ZH")
+ zuerich_merges <- swcGetMunMerges(year = 2019, canton = "ZH")
 }
