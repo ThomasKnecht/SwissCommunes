@@ -35,3 +35,4 @@ Collate:
     'commune-hist-decl.R'
     'swcGetMapping.R'
     'swcGetMutations.R'
+    'swcGetMunMerges.R'
