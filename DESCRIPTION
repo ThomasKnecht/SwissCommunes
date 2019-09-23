@@ -21,6 +21,7 @@ Imports:
     logging (>= 0.8-104),
     Matrix,
     plyr (>= 1.8.4),
+    dplyr (>= 0.8.3),
     reshape2 (>= 1.4.3),
     SwissHistMunData
 Suggests:
