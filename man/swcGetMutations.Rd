@@ -4,7 +4,7 @@
 \alias{swcGetMutations}
 \title{Create a list of municipality mutations}
 \usage{
-swcGetMutations(swc = NULL, mids = NULL)
+swcGetMutations(swc = NULL, mids = NULL, canton = NULL)
 }
 \arguments{
 \item{swc}{Ignored.}
