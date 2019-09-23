@@ -40,17 +40,14 @@ swcGetMunMerges <- function(year = NULL, canton = NULL) {
     !grepl(c("Reassignment|name"), mAdmissionMode.x)
   )
 
-
-  mun.mut.fus <- dplyr::mutate(
-    mun.mut.fus,
-    name_to = ifelse(!is.na(mShortName.y.y), mShortName.y.y, mShortName.y.x)
-  )
-
   mun.mut.final <- dplyr::select(mun.mut.fus,
     canton = cAbbreviation.x,
     mId_from = mId.x.x,
     name_from = mShortName.x.x,
     mId_to = mId.y.x,
-    name_to
+    name_to = mShortName.y.x,
+    merge_date = mMutationDate.x,
+    rename = mShortName.y.y,
+    rename_date = mMutationDate.y
   )
 }
