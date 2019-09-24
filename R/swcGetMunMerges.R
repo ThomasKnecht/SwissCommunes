@@ -35,19 +35,37 @@ swcGetMunMerges <- function(year = NULL, canton = NULL) {
     !(mMutationNumber.x %in% unique(na.omit(mun.mut$mMutationNumber.y)))
   )
 
+  mun.mut.red$rename <- dplyr::if_else(grepl(c("name"), mun.mut.red$mAdmissionMode.x),
+                               mun.mut.red$mShortName.y.x,
+                               mun.mut.red$mShortName.y.y)
+
+  mun.mut.red$rename_date <- dplyr::if_else(grepl(c("name"), mun.mut.red$mAdmissionMode.x),
+                               mun.mut.red$mMutationDate.x,
+                               mun.mut.red$mMutationDate.y)
+
+
+  mun.mut.red$mShortName.y.x <- dplyr::if_else(grepl(c("name"), mun.mut.red$mAdmissionMode.x),
+                                            NA_character_,
+                                            mun.mut.red$mShortName.y.x)
+
+  mun.mut.red$mMutationDate.x <- dplyr::if_else(grepl(c("name"), mun.mut.red$mAdmissionMode.x),
+                                              structure(NA_real_, class = "Date"),
+                                               mun.mut.red$mMutationDate.x)
+
+
   mun.mut.fus <- dplyr::filter(
     mun.mut.red,
-    !grepl(c("Reassignment|name"), mAdmissionMode.x)
+    !grepl(c("Reassignment"), mAdmissionMode.x)
   )
 
   mun.mut.final <- dplyr::select(mun.mut.fus,
     canton = cAbbreviation.x,
     mId_from = mId.x.x,
-    name_from = mShortName.x.x,
+    merge_name_from = mShortName.x.x,
     mId_to = mId.y.x,
-    name_to = mShortName.y.x,
+    merge_name_to = mShortName.y.x,
     merge_date = mMutationDate.x,
-    rename = mShortName.y.y,
-    rename_date = mMutationDate.y
+    rename,
+    rename_date
   )
 }
