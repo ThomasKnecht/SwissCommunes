@@ -68,7 +68,9 @@ swcGetMunHistory <- function(munId){
 #' @export
 add_past <- function(x, mutations){
 
-  t_added <- dplyr::filter(mutations, mHistId.y %in% x$mHistId.x) %>% full_join(x, by = c("mHistId.y" = "mHistId.x"))
+  history <- dplyr::filter(mutations, mHistId.y %in% x$mHistId.x)
+
+  t_added <- dplyr::full_join(history, x, by = c("mHistId.y" = "mHistId.x"))
 
 }
 
