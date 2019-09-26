@@ -1,5 +1,14 @@
-library(dplyr)
-
+#' Get municipality mutation history
+#'
+#' The history goes back as far as the mutation number becocmes 1000
+#'   (first time registration)
+#'
+#' @param munId Municipality Id as integer
+#'
+#' @examples
+#' waedenswil_history <- swcGetMunHistory(293)
+#'
+#' @export
 swcGetMunHistory <- function(munId){
 
   mutations <- swcGetMutations() %>%
@@ -38,7 +47,24 @@ swcGetMunHistory <- function(munId){
 
 
 
-
+#' Add the past to original data
+#'
+#' The past is searched by the mHistId.x of the origial file
+#'
+#' @param x The original data as tibble.
+#'
+#' @param mutations Mutation file
+#'
+#' @examples
+#' mutations <- swcGetMutations()
+#'
+#' t <-
+#'  dplyr::filter(mutations, mId.y == 293) %>%
+#'  dplyr::filter(mHistId.y == max(mHistId.y))
+#'
+#' t_past <- add_past(t, mutations)
+#'
+#' @export
 add_past <- function(x, mutations){
 
   t_added <- dplyr::filter(mutations, mHistId.y %in% x$mHistId.x) %>% full_join(x, by = c("mHistId.y" = "mHistId.x"))
