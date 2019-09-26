@@ -6,6 +6,7 @@
 #' @param munId Municipality Id as integer
 #'
 #' @examples
+#' library(dplyr)
 #' waedenswil_history <- swcGetMunHistory(293)
 #'
 #' @export
