@@ -6,14 +6,14 @@
 #' @param munId Municipality Id as integer
 #'
 #' @examples
-#' library(dplyr)
 #' waedenswil_history <- swcGetMunHistory(293)
 #'
 #' @export
 swcGetMunHistory <- function(munId){
 
-  mutations <- swcGetMutations() %>%
-    dplyr::select(
+  mutations <- swcGetMutations()
+
+  mutations_reduced <- dplyr::select(mutations,
       mMutationNumber,
       mMutationId,
       cAbbreviation,
@@ -24,9 +24,9 @@ swcGetMunHistory <- function(munId){
       mAdmissionMode,
       mMutationDate)
 
-  t <-
-    dplyr::filter(mutations, mId.y == munId) %>%
-    dplyr::filter(mHistId.y == max(mHistId.y))
+  t <- dplyr::filter(mutations_reduced, mId.y == munId)
+
+  t <- dplyr::filter(t, mHistId.y == max(mHistId.y))
 
   success <- 1
 
@@ -36,7 +36,7 @@ swcGetMunHistory <- function(munId){
 
     t <- purrr::reduce(
       .x = vector,
-      ~add_past(..1,mutations = mutations),
+      ~add_past(..1,mutations = mutations_reduced),
       .init = t
     )
 
