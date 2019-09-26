@@ -56,13 +56,12 @@ swcGetMunHistory <- function(munId){
 #' @param mutations Mutation file
 #'
 #' @examples
-#' library(dplyr)
-#'
 #' mutations <- swcGetMutations()
 #'
 #' t <-
-#'  dplyr::filter(mutations, mId.y == 293) %>%
-#'  dplyr::filter(mHistId.y == max(mHistId.y))
+#'  dplyr::filter(mutations, mId.y == 293)
+#'
+#' t_1 <- dplyr::filter(t, mHistId.y == max(mHistId.y))
 #'
 #' t_past <- add_past(t, mutations)
 #'
