@@ -56,6 +56,8 @@ swcGetMunHistory <- function(munId){
 #' @param mutations Mutation file
 #'
 #' @examples
+#' library(dplyr)
+#'
 #' mutations <- swcGetMutations()
 #'
 #' t <-
